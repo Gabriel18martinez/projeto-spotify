@@ -1,0 +1,23 @@
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <h3>Meus Carros Favoritos</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        @for (item of music; track $index) {
+          <div class="col">
+            <app-card-music [music]="item"></app-card-music>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+  
