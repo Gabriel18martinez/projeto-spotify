@@ -19,7 +19,7 @@ jobs:
       - name: Set up Java version
         uses: actions/setup-java@v1
         with:
-          java-version: 'java21'
+          java-version: 17-ea
 
       - name: Build with Maven
         run: mvn clean install
@@ -59,4 +59,3 @@ jobs:
           app-name: 'spotify-melhorado'
           slot-name: 'Production'
           package: '*.jar'
-          
