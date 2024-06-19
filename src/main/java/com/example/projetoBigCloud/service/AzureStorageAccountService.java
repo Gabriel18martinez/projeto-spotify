@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @Service
 public class AzureStorageAccountService {
-    private final String connectionString = "DefaultEndpointsProtocol=https;AccountName=bigcloudspotify;AccountKey=;EndpointSuffix=core.windows.net";
+    private final String connectionString = "";
     public String uploadFileToAzure(String imageBase64) throws IOException {
         BlobContainerClient client = new BlobContainerClientBuilder()
                 .connectionString(this.connectionString)
