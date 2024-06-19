@@ -6,12 +6,15 @@ import com.example.projetoBigCloud.models.Banda;
 import com.example.projetoBigCloud.models.Musica;
 import com.example.projetoBigCloud.repository.BandaRepository;
 import com.example.projetoBigCloud.repository.MusicaRepository;
+import com.example.projetoBigCloud.service.AzureStorageAccountService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,12 +28,17 @@ public class BandaController {
     @Autowired
     private MusicaRepository musicaRepository;
 
+    @Autowired
+    private AzureStorageAccountService accountService;
+
+
     @PostMapping
-    public ResponseEntity<Banda> criar(@Valid @RequestBody BandaRequest request) {
+    public ResponseEntity<Banda> criar(@Valid @RequestBody BandaRequest request) throws IOException {
         Banda banda = new Banda();
         banda.setNome(request.getNome());
         banda.setDescricao(request.getDescricao());
-        banda.setBackDrop(request.getBackDrop());
+        String imageUrl = this.accountService.uploadFileToAzure(request.getBackDrop());
+        banda.setBackDrop(imageUrl);
         this.repository.save(banda);
 
         for (MusicaRequest item : request.getMusicas()) {
@@ -88,4 +96,5 @@ public class BandaController {
             return new ResponseEntity<>(item.getMusicas(), HttpStatus.OK);
         }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
 }
