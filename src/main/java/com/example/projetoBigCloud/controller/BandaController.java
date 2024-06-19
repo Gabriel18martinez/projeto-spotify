@@ -37,8 +37,7 @@ public class BandaController {
         Banda banda = new Banda();
         banda.setNome(request.getNome());
         banda.setDescricao(request.getDescricao());
-        String imageUrl = this.accountService.uploadFileToAzure(request.getBackDrop());
-        banda.setBackDrop(imageUrl);
+        banda.setBackDrop(request.getBackDrop());
         this.repository.save(banda);
 
         for (MusicaRequest item : request.getMusicas()) {
