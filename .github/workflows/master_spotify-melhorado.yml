@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy JAR app to Azure Web App - bigcloud-spotify
+name: Build and deploy JAR app to Azure Web App - spotify-melhorado
 
 on:
   push:
@@ -48,9 +48,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_71A367148F2E474F9C48346D466C68B0 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1EF72E87B35B46C4867F7B263D97B4CF }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_56D2BD85F7824B68BD31145A5E3B5331 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_51B4EB9E101542029A093B6C72B4EE3D }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_113FE69836A84773888BDEC8533BCFC1 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_9D33FB33F8234697A88C430B7E00C2E8 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -59,5 +59,3 @@ jobs:
           app-name: 'spotify-melhorado'
           slot-name: 'Production'
           package: '*.jar'
-          
-          
